@@ -36,6 +36,7 @@
 }
 
 a.nav-link.active {
+    margin-bottom: 10px;
     background-color: #0C697A;
     color: white;
 }

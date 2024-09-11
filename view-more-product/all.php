@@ -51,10 +51,24 @@ if (isset($_SESSION["cart_item"]) && is_array($_SESSION["cart_item"])) {
                     </div>
                     <div class="text">
                         <h4><?php echo $data['NAME_PRODUCT']; ?></h4>
-                        <p><?php echo $data['PRICE_PRODUCT']; ?></p>
+                        <p>Rp <?php echo number_format($data['PRICE_PRODUCT'], 0, ',', '.'); ?></p>
+                        <!-- Menampilkan stok barang -->
+                        <p class="stock-status">
+                            <?php
+                            if ($data['STOK_BARANG'] > 0) {
+                                echo "Stok: " . $data['STOK_BARANG'];
+                            } else {
+                                echo "<span style='color:red;'>Stok Habis</span>";
+                            }
+                            ?>
+                        </p>
                     </div>
                     <div class="link">
-                        <a href="../transaksi/addToCart.php?action=plus&id=<?php echo $data['ID_PRODUCT']; ?>&link=product">Beli</a>
+                        <?php if ($data['STOK_BARANG'] > 0) : ?>
+                            <a href="../transaksi/addToCart.php?action=plus&id=<?php echo $data['ID_PRODUCT']; ?>&link=product">Beli</a>
+                        <?php else : ?>
+                            <a href="#" class="disabled-link" style="background-color: #ccc; pointer-events: none;">Tidak Tersedia</a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
