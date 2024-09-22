@@ -44,8 +44,8 @@ if (isset($_SESSION["cart_item"]) && is_array($_SESSION["cart_item"])) {
 
     <div class="container-main">
         <?php foreach ($result as $data) : ?>
-            <div class="box" onclick="window.location.href='../product/product_detail.php?id=<?php echo $data['ID_PRODUCT']; ?>'">
-                <div class="card" style="background-color: #b5b0b0;">
+            <div class="box">
+                <div class="card" style="background-color: #b5b0b0;" onclick="window.location.href='../product/product_detail.php?id=<?php echo $data['ID_PRODUCT']; ?>'">
                     <div class="image">
                         <img src="../resource/product/img/<?php echo $data['GAMBAR_PRODUCT']; ?>" alt="...">
                     </div>
